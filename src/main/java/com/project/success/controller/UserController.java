@@ -8,6 +8,8 @@ import org.springframework.http.ResponseEntity;
 //import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
@@ -22,23 +24,39 @@ public class UserController {
     @Autowired
     private UserRepository userRepository;
 
+    private String massage;
+
 //    @Autowired
 //    private PasswordEncoder passwordEncoder;
 
 
     @PostMapping(value="/login",
                  produces = "application/json")
-    public User login(@RequestBody User userdata) {
-
-        User user = userRepository.findByEmail(userdata.getEmail());
-
-//        user.ifPresent(selectUser -> {
-//            System.out.println("user : " + selectUser);
-//            System.out.println("user : " + selectUser.getEmail());
-//        });
+    public String login(@RequestBody User userdata, HttpSession session) {
 
 
-        return user;
+        Optional<User> user = userRepository.findByEmail(userdata.getEmail());
+
+
+        user.ifPresent(selectUser -> {
+
+
+            String passTest = selectUser.getPassword();
+            System.out.println(passTest);
+            if(passTest.equals(userdata.getPassword())){
+                this.massage = "성공";
+                System.out.println("테스트 성공");
+                session.setAttribute("user",selectUser.getEmail());
+            } else {
+                System.out.println("안됨");
+                this.massage ="실패";
+            }
+        });
+
+        String mag = "{\"massage\" : " + massage +"}";
+
+
+        return mag;
 
     }
 
@@ -69,10 +87,12 @@ public class UserController {
         System.out.println(userdata);
         User user = new User();
         user.setEmail(userdata.getEmail());
-        user.setName(userdata.getEmail());
+        user.setName(userdata.getName());
         user.setPassword(userdata.getPassword());
         user.setAddress(userdata.getAddress());
         user.setPhone(userdata.getPhone());
+        user.setSalt(userdata.getSalt());
+
 
         User newUser = userRepository.save(user);
 //        user.setPassword(passwordEncoder.encode(user.getPassword()));
