@@ -1,0 +1,76 @@
+.Navbar {
+    margin: 0 18.5%;
+    padding: 0;
+    width: 63%;
+    height: 80px;
+    display: flex;
+    font-size: 15px;
+    text-decoration: none;
+    z-index: 5;
+}
+.Navlogo {
+    display: inline-flex;
+    padding: 20px 0;
+    line-height: 80px;
+}
+.Navmenu {
+    display: inline-flex;
+    padding-left: 100px;
+    position: relative;
+    flex-grow: 1;
+    align-content: center;
+    line-height: 81px;
+}
+.Navmenu a {
+    color: black !important;
+}
+.Menubtn {
+    display: inline-block;
+    text-align: center;
+    font-family: 'Nanum Gothic', sans-serif;
+    width: 100px;
+    transition: background-color 0.4s ease;
+}
+.Menubtn i {
+    transition: transform 0.4s ease;
+}
+.Menubtn:hover {
+    background-color: rgb(255, 174, 201);
+    color: white;
+    font-weight: bold;
+}
+.Menubtn:hover i {
+    transform: rotate(90deg);
+}
+.Signup {
+    position: absolute;
+    right: 0;
+    margin: 17.5px 0;
+    display: inline-block;
+    text-align: center;
+    font-family: 'Nanum Gothic', sans-serif;
+    width: 100px;
+    height: 45px;
+    color: white;
+    line-height: 45px;
+    background-color: rgb(255, 174, 201);
+    transition: background-color 0.4s ease;
+}
+.Signup:hover {
+    background-color: rgb(255, 151, 185);
+}
+.Login {
+    position: absolute;
+    right: 100px;
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    font-family: 'Nanum Gothic', sans-serif;
+    width: 100px;
+}
+.Login:hover {
+    font-weight: bold;
+}
+.Navsmallmenu {
+    display: none;
+}

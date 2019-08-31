@@ -1,0 +1,76 @@
+.Signin{
+    animation: slidedown 1s;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background: url(Signin.jpg);
+    background-size: cover;
+    background-position: center;
+    font-family: 'Nanum Gothic', sans-serif;
+    width: 100%;
+    height: 890px;
+    position: absolute;
+}
+.Signinbox {
+    width: 400px;
+    height: 550px;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 70px 0;
+    color: rgb(255, 204, 221);
+    font-size: 30px;
+    top: 50%;
+    left: 70%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    box-sizing: border-box;
+}
+.Signinbox form {
+    padding: 50px 40px;
+    text-align: left;
+    color: white;
+}
+.Signinbox form input[type="text"], .Signinbox form input[type="password"] {
+    display: block;
+    background: none;
+    border: none;
+    border-bottom: 1px solid grey;
+    font-size: 15px;
+    outline: none;
+    width: 150px;
+    height: 30px;
+    margin: 15px 5px;
+    color: white;
+    transition: all 0.5s ease;
+}
+.Signinbox form input[type="text"]:hover,
+.Signinbox form input[type="text"]:focus,
+.Signinbox form input[type="password"]:hover,
+.Signinbox form input[type="password"]:focus {
+    width: 310px;
+    font-size: 20px;
+    border-color: pink;
+}
+.signinbtn{
+    margin: 20px 25% 0 25%;
+    text-align: center;
+    line-height: 50px;
+    background: rgb(255, 204, 221);
+    width: 50%;
+    height: 50px;
+    cursor: pointer;
+}
+.inputactive {
+    width: 310px !important;
+    font-size: 20px !important;
+    border-color: pink !important;
+}
+@keyframes slidedown {
+    from {
+        left: -100%;
+    }
+  
+    to {
+        left: 0;
+    }
+  }
