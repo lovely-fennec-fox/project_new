@@ -30,6 +30,8 @@ public class UserController {
 //    private PasswordEncoder passwordEncoder;
 
 
+
+    @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping(value="/login",
                  produces = "application/json")
     public String login(@RequestBody User userdata, HttpSession session) {

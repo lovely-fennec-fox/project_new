@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
+import axios from 'axios';
 import './Signin.css';
+
 
 class Signin extends Component {
     constructor(props){
@@ -12,6 +14,24 @@ class Signin extends Component {
         this.signin = (e)=>{
 
         }
+        this.loginreq = (e) =>{
+            e.preventDefault();
+            console.dir(e.target);
+            axios({
+                url: 'http://localhost:8080/login',
+                method: 'post',
+                data: {
+                    email: e.target[0].value,
+                    password: e.target[1].value
+                }
+            })
+                .then(res => {
+                    console.log(res);
+                })
+                .catch(err => {
+                    console.log(err);
+                })
+        }
     }
 
     render(){
@@ -19,13 +39,13 @@ class Signin extends Component {
             <div className = "Signin">
                 <div className = "Signinbox">
                     <span>환영합니다!</span>
-                    <form>
+                    <form onSubmit={this.loginreq}>
                         ID
-                        <input type="text" placeholder="abc123@google.com" onChange={this.active}/>
+                        <input type="text" placeholder="abc123@google.com" onChange={this.active} name="email"/>
                         Password
-                        <input type="password" placeholder="10자리 이상" onChange={this.active}/>
+                        <input type="password" placeholder="10자리 이상" onChange={this.active} name="password"/>
 
-                        <div className="signinbtn">로그인</div>
+                        <input type="submit" className="signinbtn" value="로그인"></input>
                     </form>
                 </div>
             </div>
